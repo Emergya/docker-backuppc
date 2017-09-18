@@ -1,0 +1,21 @@
+version: '3'
+services:
+  backuppc.emergyalabs.com:
+    restart: unless-stopped
+    image: emergya/backuppc:latest
+    environment:
+      - BACKUPPC_UUID=${HOST_UID}
+      - BACKUPPC_GUID=${HOST_GID}
+      - DEVELOPER_USER=${DEVELOPER_USER}
+      - LOCALES=es_ES.UTF-8 en_US.UTF-8
+      - PROJECT_NAME=${PROJECT_NAME}
+      - ENVIRONMENT=${ENVIRONMENT}
+      - ENV_VHOST=${ENV_VHOST}
+      - VIRTUAL_HOSTS=${VIRTUAL_HOSTS}
+      - VIRTUAL_HOST=https://${ENV_VHOST}
+      - SMTP_HOST=smtp.example.com
+      - SMTP_MAIL_DOMAIN=example.com
+    volumes:
+      - ${DATA_DIR}/docker-containers-volumes/${ENV_VHOST}/etc/backuppc:/etc/backuppc
+      - ${DATA_DIR}/docker-containers-volumes/${ENV_VHOST}/home/backuppc:/home/backuppc
+      - ${DATA_DIR}/docker-containers-volumes/${ENV_VHOST}/data/backuppc:/data/backuppc
