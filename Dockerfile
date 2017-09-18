@@ -1,6 +1,6 @@
 FROM alpine:3.6
 
-MAINTAINER Adrien Ferrand <ferrand.ad@gmail.com>
+MAINTAINER Sistemas <sistemas@emergya.com>
 
 ENV BACKUPPC_VERSION 4.1.3
 ENV BACKUPPC_XS_VERSION 0.56
